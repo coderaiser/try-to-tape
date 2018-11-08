@@ -43,5 +43,8 @@
     "tape": "^4.8.0",
     "try-catch": "^2.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.3.0"
+  }
 }
