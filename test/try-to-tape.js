@@ -1,8 +1,7 @@
 'use strict';
 
 const test = require('tape');
-const diff = require('sinon-called-with-diff');
-const sinon = diff(require('sinon'));
+const stub = require('@cloudcmd/stub');
 const tryCatch = require('try-catch');
 
 const tryToTape = require('..');
@@ -15,7 +14,7 @@ test('try-to-tape: no args', (t) => {
 });
 
 test('try-to-tape: tape', async (t) => {
-    const tape = sinon.stub();
+    const tape = stub();
     
     const test = tryToTape(tape);
     const promise = async () => {
@@ -29,8 +28,8 @@ test('try-to-tape: tape', async (t) => {
 });
 
 test('try-to-tape: tape: rejects: fail', async (t) => {
-    const fail = sinon.stub();
-    const end = sinon.stub();
+    const fail = stub();
+    const end = stub();
     const tape = async (msg, promise) => {
         const t = {
             fail,
@@ -52,8 +51,8 @@ test('try-to-tape: tape: rejects: fail', async (t) => {
 });
 
 test('try-to-tape: tape: rejects: end', async (t) => {
-    const fail = sinon.stub();
-    const end = sinon.stub();
+    const fail = stub();
+    const end = stub();
     const tape = async (msg, promise) => {
         const t = {
             fail,
@@ -75,8 +74,8 @@ test('try-to-tape: tape: rejects: end', async (t) => {
 });
 
 test('try-to-tape: tape: resolves: fail', async (t) => {
-    const fail = sinon.stub();
-    const end = sinon.stub();
+    const fail = stub();
+    const end = stub();
     const tape = async (msg, promise) => {
         const t = {
             fail,
@@ -96,8 +95,8 @@ test('try-to-tape: tape: resolves: fail', async (t) => {
 });
 
 test('try-to-tape: tape: resolves: end', async (t) => {
-    const fail = sinon.stub();
-    const end = sinon.stub();
+    const fail = stub();
+    const end = stub();
     const tape = async (msg, promise) => {
         const t = {
             fail,
@@ -117,8 +116,8 @@ test('try-to-tape: tape: resolves: end', async (t) => {
 });
 
 test('try-to-tape: tape: resolves: multiple arguments', async (t) => {
-    const fail = sinon.stub();
-    const end = sinon.stub();
+    const fail = stub();
+    const end = stub();
     const tape = async (msg, promise) => {
         const t = {
             fail,
@@ -129,6 +128,7 @@ test('try-to-tape: tape: resolves: multiple arguments', async (t) => {
     };
     
     const test = tryToTape(tape);
+    /* eslint no-unused-vars: 0*/
     const promise = async (a, b, c) => {
     };
     
@@ -137,3 +137,4 @@ test('try-to-tape: tape: resolves: multiple arguments', async (t) => {
     t.notOk(end.called, 'should not call fail');
     t.end();
 });
+
