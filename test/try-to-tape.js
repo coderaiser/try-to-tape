@@ -115,3 +115,25 @@ test('try-to-tape: tape: resolves: end', async (t) => {
     t.notOk(end.called, 'should not call fail');
     t.end();
 });
+
+test('try-to-tape: tape: resolves: multiple arguments', async (t) => {
+    const fail = sinon.stub();
+    const end = sinon.stub();
+    const tape = async (msg, promise) => {
+        const t = {
+            fail,
+            end,
+        };
+        
+        await promise(t);
+    };
+    
+    const test = tryToTape(tape);
+    const promise = async (a, b, c) => {
+    };
+    
+    await test('hello world', promise);
+    
+    t.notOk(end.called, 'should not call fail');
+    t.end();
+});
