@@ -27,6 +27,36 @@ test('try-to-tape: tape', async (t) => {
     t.end();
 });
 
+test('try-to-tape: tape: only', async (t) => {
+    const tape = stub();
+    tape.only = stub();
+    
+    const test = tryToTape(tape);
+    const promise = async () => {
+        throw Error('some error');
+    };
+    
+    test.only('hello world', promise);
+    
+    t.ok(tape.only.calledWith('hello world', () => {}), 'should call tape');
+    t.end();
+});
+
+test('try-to-tape: tape: skip', async (t) => {
+    const tape = stub();
+    tape.skip = stub();
+    
+    const test = tryToTape(tape);
+    const promise = async () => {
+        throw Error('some error');
+    };
+    
+    test.skip('hello world', promise);
+    
+    t.ok(tape.skip.calledWith('hello world', () => {}), 'should call tape');
+    t.end();
+});
+
 test('try-to-tape: tape: rejects: fail', async (t) => {
     const fail = stub();
     const end = stub();
