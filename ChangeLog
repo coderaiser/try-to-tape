@@ -1,3 +1,9 @@
+2019.01.13, v1.2.3
+
+fix:
+- (try-to-tape) get back console.error
+
+
 2019.01.13, v1.2.2
 
 fix:
