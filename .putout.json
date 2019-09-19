@@ -1,0 +1,21 @@
+{
+    "match": {
+        "lib": {
+            "remove-console": ["on", {
+                "exclude": [
+                    "console.error(e)"
+                ]
+            }]
+        },
+        "test": {
+            "remove-only": "off",
+            "remove-skip": "off",
+            "convert-tape-to-supertape": "off",
+            "remove-unused-variables": ["on", {
+                "exclude": [
+                    "async (a, b, c) => {}"
+                ]
+            }]
+        }
+    }
+}

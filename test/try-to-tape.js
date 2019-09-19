@@ -145,7 +145,6 @@ test('try-to-tape: tape: resolves: fail', async (t) => {
     t.end();
 });
 
-
 test('try-to-tape: tape: resolves: end', async (t) => {
     const fail = stub();
     const end = stub();
