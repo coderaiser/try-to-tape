@@ -10,7 +10,7 @@
 [CoverageURL]:              https://coveralls.io/github/coderaiser/try-to-tape?branch=master
 [CoverageIMGURL]:           https://coveralls.io/repos/coderaiser/try-to-tape/badge.svg?branch=master&service=github
 
-Wrap `tape` `async` functions and show error on reject.
+Wrap `tape` `async` functions and show error on reject. Bundled with [supertape](https://github.com/coderaiser/supertape).
 
 ## Install
 
